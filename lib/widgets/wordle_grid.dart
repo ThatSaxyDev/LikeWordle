@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:like_wordle/providers/settings_provider.dart';
 import 'package:like_wordle/widgets/wordle_row.dart';
 
-const rows = 6;
-
-class WordleGrid extends StatelessWidget {
+class WordleGrid extends ConsumerWidget {
   const WordleGrid({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final gameSettings = ref.watch(gameSettingsProvider);
+
+    final wordSize = gameSettings.wordSize;
+
+    final List<WordleRow> rows = List.empty(growable: true);
+
+    for (int i = 0; i < gameSettings.attempts; i++) {
+      rows.add(
+        WordleRow(
+          wordSize: wordSize,
+        ),
+      );
+    }
 
     return Container(
       child: Column(
-        children: [
-          WordleRow(),
-          WordleRow(),
-          WordleRow(),
-          WordleRow(),
-          WordleRow(),
-          WordleRow(),
-        ],
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: rows,
       ),
     );
   }

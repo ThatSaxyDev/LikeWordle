@@ -15,6 +15,7 @@ class WordlePage extends StatelessWidget {
       // ),
       body: SafeArea(
         child: Container(
+          width: MediaQuery.of(context).size.width,
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
