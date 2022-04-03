@@ -16,7 +16,7 @@ jobs:
       with:
         flutter-version: '2.10.4'
         channel: 'stable'
-    - run: flutter build web --release --base-href /
+    - run: flutter build web --release --base-href $BASE_HREF
     - name: Deploy gh-pages
       uses: peaceiris/actions-gh-pages@v3
       if: ${{ github.ref == 'refs/head/main' }}
