@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class LetterBox extends StatelessWidget {
-  const LetterBox({Key? key}) : super(key: key);
+  final String? letter;
+  const LetterBox({
+    Key? key,
+    this.letter,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +19,13 @@ class LetterBox extends StatelessWidget {
         border: Border.all(
           color: Colors.grey,
           width: 2,
+        ),
+      ),
+      child: Text(
+        letter ?? '',
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );
